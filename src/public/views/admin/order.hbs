@@ -1,0 +1,62 @@
+<section class="order light-section">
+    <div class="container mx-auto pt-12">
+        <h1 class="text-lg font-bold mb-4">All orders</h1>
+        {{#if messages.success}}
+        <div id='success-alert'
+            class="flex item-center bg-green-500 text-white text-sm font-bold px-4 py-3 rounded-2xl mb-4" role="alert">
+            <p>{{messages.success}}</p>
+        </div>
+        {{/if}}
+
+        {{#if dataObj.length}}
+
+        <table class="w-full bg-white table-auto">
+            <thead>
+                <tr class="text-center">
+                    <th class="px-4 py-2 ">Order</th>
+                    <th class="px-4 py-2 ">Name</th>
+                    <th class="px-4 py-2 ">Phone</th>
+                    <th class="px-4 py-2 ">Address</th>
+                    <th class="px-4 py-2 ">Date</th>
+                    <th class="px-4 py-2 ">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each dataObj}}
+                <tr>
+                    <td class="border px-4 py-2 text-sm font-bold"><a href="#" class="link">{{_id}}</a>
+                        {{#each items}}
+                        <h1>{{item.name}}--{{Qty}}Qty</h1>
+                        {{/each}}
+                    </td>
+                    <td class="border px-4 py-2 text-sm font-bold">{{customerId.name}}</td>
+                    <td class="border px-4 py-2 text-sm font-bold">{{phone}}</td>
+                    <td class="border px-4 py-2 text-sm font-bold">{{address}}</td>
+                    <td class="border px-4 py-2 text-sm font-bold">{{dateFormat created_at "h:mm a , DD MMMM YYYY "}}
+                    </td>
+                    <td class="border px-4 py-2 text-sm font-bold">
+                        <form action="/admin/order" method="POST">
+                            <input type="hidden" name="orderId" value="{{_id }}">
+                            <select name="status" id="statusOption" class=" w-40 bg-white px-4 py-2 pr-8 text-sm font-bold  leading-tight focus:outline-none focus:shadow-outline" onchange="form.submit()">
+                                <option>{{status}}</option>
+                                <option value="Confirm">Confirm</option>
+                                <option value="Rejact">Rejact</option>
+                                <option value="Prepaired">Prepaired</option>
+                                <option value="Dispatch">Dispatch</option>
+                                <option value="Delivered">Delivered</option>
+                                <option value="Completed">Completed</option>
+                            </select>
+                        </form>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        {{else}}
+        <div class="noOrder text-center mt-20">
+            <h1 class=" text-6xl font-bold"><i>No order found</i></h1>
+        </div>
+        {{/if}}
+    </div>
+</section>

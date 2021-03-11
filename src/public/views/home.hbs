@@ -1,0 +1,46 @@
+<section class="  home">
+    <div class=" container mx-auto flex items-center justify-center h-96">
+        <div class="text-center">
+            <h6 class="text-lg text-white mb-4"><em>Are you hungary?</em></h6>
+            <h1 class="text-6xl text-white font-bold m-4">Don't Wait !</h1>
+            <a class="main-btn inline-block rounded-full px-6 py-2 mt-4 text-white font-bold">Order now</a>
+        </div>
+    </div>
+</section>
+<section class="menu-container mx-auto py-8">
+    <h1 class="text-xl font-bold mb-8">All Dishes</h1>
+    <div class="menu-container grid md:grid-cols-4 sm:grid-cols-3 gap-y-10 gap-x-10">
+        {{#each menu}}
+        <div class="menu-card pb-2">
+            <div class="w-full border-red-500">
+                <img class="w-full h-40 img" src="../img/{{image}}" alt="">
+            </div>
+            <div class="text-center">
+                <h2 class="text-lg font-bold mb-4 capitalize">{{name}}</h2>
+                <div class="flex items-center justify-around mt-6">
+                    <span class="font-bold text-lg">₹ {{price}}</span>
+                    <button data-dish='{{_id}}' class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                        <span>+</span>
+                        <span class="ml-4">Add</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+    </div>
+</section>
+
+
+{{!-- <section class="hero py-14">
+    <div class="container mx-auto flex items-center justify-between">
+        <div class="w-1/2">
+            <h6 class="text-lg"><em>Are you hungary?</em></h6>
+            <h1 class="text-6xl font-bold">Don't Wait !</h1>
+            <a class="main-btn inline-block rounded-full px-6 py-2 mt-4 text-white font-bold">Order now</a>
+        </div>
+        <div class="w-1/2">
+            <img src="../img/hero-pizza.png" alt="">
+        </div>
+    </div>
+</section> --}}

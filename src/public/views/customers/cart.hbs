@@ -1,0 +1,70 @@
+<section class="cart py-16">
+    {{#if session.cart}}
+    <div class="order container mx-auto w-1/2">
+        <div class="flex items-center border-b border-gray-300 pb-4">
+            <img src="../../img/cart-black.png" alt="">
+            <h1 class="font-bold ml-4 text-2xl">Order summary</h1>
+        </div>
+
+        {{#each data}}
+        <div class="pizza-list menu-card">
+            <div class="flex items-center my-8 pr-2 h-24">
+                <img class="w-32 h-24" src="../../img/{{item.image}}" alt="">
+                <div class="flex-1 ml-4">
+                    <h1 class="text-lg font-bold">{{item.name}}</h1>
+                </div>
+                <span class="flex-1 text-lg font-bold">Qty : {{Qty}}</span>
+                <span class="text-lg font-bold">₹ {{priceQty}}</span>
+            </div>
+        </div>
+        {{/each}}
+        <hr>
+        <div class="text-right py-4">
+            <div>
+                <span class="text-lg font-bold">Total Amount :</span>
+                <span class="amount text-2xl font-bold ml-2">₹ {{session.cart.totalPrice}}</span>
+            </div>
+
+            {{#if user}}
+
+            <div class="mt-12">
+                {{#if messages.error}}
+                <span class="text-red-500 font-bold text-center mb-4">{{messages.error}}</span>
+                {{/if}}
+                {{#if messages.success}}
+                <span class="text-red-500 font-bold text-center mb-4">{{messages.success}}</span>
+                {{/if}}
+                <form action="/order" method="POST" >
+                    <input class="border border-gray-400 p-2 w-1/2 mb-4 rounded-lg" type="text" name="phone"
+                        placeholder="Phone number:">
+                    <input class="border border-gray-400 p-2 w-1/2 rounded-lg " type="text" placeholder="Address:"
+                        name="address">
+                    <div>
+                        <button type="submit" class="main-btn py-2 px-6 rounded-full font-bold mt-6 text-white"
+                            type="submit">Order now</button>
+                    </div>
+                </form>
+            </div>
+
+            {{else}}
+            <a href="/login"
+                class="inline-block cursor-pointer main-btn py-2 px-6 rounded-full font-bold mt-6 text-white">Login to
+                continue</a>
+            {{/if}}
+
+        </div>
+    </div>
+
+    {{else}}
+    <div class="empty-cart py-">
+        <div class="container mx-auto text-center">
+            <h1 class="text-3xl font-bold mb-2 ">Cart Empty 😟</h1>
+            <p class="text-gray-500 text-lg mb-12">You probably haven't ordered any dish yet.<br> To order a dish, go to
+                the main page</p>
+            <img class="w-2/5 mx-auto" src="../../img/empty-cart.png" alt="empty-cart">
+            <a href="/" class="main-btn inline-block px-6 py-2 rounded-full text-white font-bold mt-12">Go back</a>
+        </div>
+    </div>
+    {{/if}}
+
+</section>

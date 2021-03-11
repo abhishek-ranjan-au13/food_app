@@ -1,0 +1,39 @@
+<div class="auth-block">
+    <section class=" flex mx-auto justify-center pt-24">
+        <form action="/register" method="POST"
+            class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col w-1/4">
+            {{#if messages.error}}
+                <span class="text-red-500 font-bold text-center">{{messages.error}}</span>
+            {{/if}}    
+            <div class="mb-2">
+                <label class="block text-grey-darker text-sm font-bold mb-2" for="name">
+                    Name
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="name"
+                    name="name" type="text" placeholder="Enter your name" value="{{name}}">
+            </div>
+            <div class="mb-4">
+                <label class="block text-grey-darker text-sm font-bold mb-2" for="email">
+                    Email
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="email"
+                    name="email" type="email" placeholder="Enter your email" value="{{email}}">
+            </div>
+            <div class="mb-6">
+                <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
+                    Password
+                </label>
+                <input class="shadow appearance-none border  rounded w-full py-2 px-3 text-grey-darker mb-3"
+                    name="password" id="password" type="password" placeholder="Enter password" value="{{password}}">
+            </div>
+            <div class="flex items-center justify-between">
+                <button type="submit" class="main-btn rounded-full text-white font-bold py-2 px-6">
+                    Sign up
+                </button>
+                <a class="inline-block align-baseline font-bold text-sm login-a" href="/login">
+                    Already have account ?
+                </a>
+            </div>
+        </form>
+    </section>
+</div>

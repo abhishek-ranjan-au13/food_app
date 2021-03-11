@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,300;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/css/toastr.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/app.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="nav-bg">
+        <nav class=' container mx-auto flex items-center justify-between py-4 h-16'>
+            <div class="nav-logo">
+                <span class="logo-1 sm:text-4xl font-bold">Food</span>
+                <span class="logo-2 sm:text-2xl font-bold ml-1">Court</span>
+            </div>
+            <div>
+                <ul class="nav-ul flex items-center">
+                    <li class="ml-6 font-bold"><a href="/">Menu</a></li>
+                    <li class="ml-6 font-bold"><a href="/customer/order">Orders</a></li>
+                    {{#if user}}
+                    <li class="ml-6 font-bold">
+                        <form id='logout' action="/logout" method="POST">
+                            <a onclick="document.getElementById('logout').submit()" href="#">Logout</a>
+                        </form>
+                    </li>
+                    {{else}}
+                    <li class="ml-6 font-bold"><a href="/register">Register</a></li>
+                    <li class="ml-6 font-bold"><a href="/login">Login</a></li>
+                    {{/if}}
+                    <li class="nav-cart sm:ml-6 font-bold rounded-full"><a href="/cart"
+                            class="inline-block sm:px-4 sm:py-2 rounded-full flex text-center">
+                            <span id="cartCounter" class="text-white font-bold sm:pr-2">{{session.cart.totalQty}}</span>
+                            <img src="../img/cart.png" alt="cart"></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+    {{{body}}}
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+
+</html>
